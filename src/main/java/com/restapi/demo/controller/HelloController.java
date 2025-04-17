@@ -1,5 +1,6 @@
 package com.restapi.demo.controller;
 
+import com.restapi.demo.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +23,16 @@ public class HelloController {
     }
 
     // uc3
-    @RequestMapping(value = {"/parm/{name}"})
+    @RequestMapping(value = {"/parm/{name}"} , method = RequestMethod.GET)
     public String sayHellobypath(@PathVariable String name){
         return "this msg from url Hello " + name;
     }
 
+    // uc4
+    @PostMapping("/post")
+    public String sayhelloDto(@RequestBody UserDto user){
+        return "Hello " + user.getFirstname()+" "+user.getLastname();
+    }
 
 
 
